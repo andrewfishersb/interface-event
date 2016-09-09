@@ -14,6 +14,7 @@ public class Event{
   private String mDrinks;
   private int mTotalCost;
   //maybe make an array list to seperate the cost of all the items
+  //maybe an array with all possible choices and have a validator method that quits if everything fails
 
 
   //create a seperate constructor to handle a randomization
@@ -29,6 +30,7 @@ public class Event{
   // ave wedding cost in portland 6,000
   //control for random input
   public void calculateCost(){
+    //party
     if(mPartyType.equalsIgnoreCase("Wedding")){
       mTotalCost += 1000;
       if(mNumberOfAttendees >100){
@@ -45,9 +47,25 @@ public class Event{
         mTotalCost+= 10 * (mNumberOfAttendees-30);
       }
     }
+    //meal
+    if(mMeal.equalsIgnoreCase("Dinner")){
+      mTotalCost += 25 * mNumberOfAttendees;
+    }else if(mMeal.equalsIgnoreCase("Pizza")){
+      mTotalCost += 17 * ((mNumberOfAttendees/6)+1);
+    }else {
+      mTotalCost +=5 * mNumberOfAttendees;
+    }
+    //music
+    if(mMusic.equalsIgnoreCase("Band")){
+      //maybe add hourly 250 an hour
+      mTotalCost += 500;
+    }
+
+    //drinks
 
   }
  // possibly change grammar for certain outcomes like 1 person and not for 1 people
+ //rented speakers if type personal play list and i do the receipt
   public String displayRequest(){
     String writtenRequest = String.format("You have requested a %s for %d people. You will be served %s, alongside an %s. Your musical entertainment will be provided by a %s",mPartyType,mNumberOfAttendees,mMeal,mDrinks,mMusic);
     return writtenRequest;
