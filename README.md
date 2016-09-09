@@ -8,7 +8,7 @@
 
 _This App will be run in the console which asks the user for input about what they want at their event and will then provide them with a cost of their event_
 
-##Specifications
+## Specifications
 
 _1. It can ask the user for a type of party i.e. wedding or birthday._
 * _Input Example: wedding_
@@ -48,6 +48,8 @@ _7. It can take the given input and calculate the cost of the party_
 
 _No Known Bugs_
 
+## Contact
+* _Andrewfishersb@gmail.com_
 
 ## Technologies Used
 
