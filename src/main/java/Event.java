@@ -57,11 +57,27 @@ public class Event{
     }
     //music
     if(mMusic.equalsIgnoreCase("Band")){
-      //maybe add hourly 250 an hour
       mTotalCost += 500;
+    }else if(mMusic.equalsIgnoreCase("DJ")){
+      mTotalCost += 200;
+    }else{
+      mTotalCost += 10;
     }
-
     //drinks
+    if(mDrinks.equalsIgnoreCase("Open Bar")){
+      mTotalCost += 20 * mNumberOfAttendees;
+    }else if(mDrinks.equalsIgnoreCase("Keg")){
+      // if(mNumberOfAttendees < 15){
+      //   mTotalCost +=60;
+      // }
+      // else if(mNumberOfAttendees< 30){
+      //   mTotalCost += 80;
+      // }else{
+        mTotalCost += ((mNumberOfAttendees/50)+1) * 150;
+      // }
+    }else{
+      mTotalCost += 100;
+    }
 
   }
  // possibly change grammar for certain outcomes like 1 person and not for 1 people

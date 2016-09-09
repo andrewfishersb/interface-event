@@ -17,17 +17,17 @@ public class EventTest{
   }
 //wedding
   @Test
-  public void calculateCost_Wedding100orUnder_1000(){
+  public void calculateCost_Wedding100orUnder_1610(){
     Event eventCreated = new Event("Wedding",100,"Horderves","Personal Playlist","Cash Bar");
-    int expectedOutcome = 1000;
+    int expectedOutcome = 1810;
     eventCreated.calculateCost();
     assertEquals(expectedOutcome, eventCreated.getTotalCost());
   }
 
   @Test
-  public void calculateCost_WeddingOver100_1300(){
+  public void calculateCost_WeddingOver100_1630(){
     Event eventCreated = new Event("Wedding",101,"Horderves","Personal Playlist","Cash Bar");
-    int expectedOutcome = 1015;
+    int expectedOutcome = 1830;
     eventCreated.calculateCost();
     assertEquals(expectedOutcome, eventCreated.getTotalCost());
   }
