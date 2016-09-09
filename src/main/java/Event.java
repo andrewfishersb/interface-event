@@ -1,24 +1,35 @@
 import java.util.List;
 import java.util.ArrayList;
 import java.lang.Throwable;
-import java.lang.Exception;
+import java.util.Random;
+
 
 
 public class Event{
-  // private String [] partyOptions;
-  // private String [] mealOptions;
-  // private String [] musicOptions;
-  // private String [] drinkOptions;
+
   private int mNumberOfAttendees;
   private String mPartyType;
   private String mMeal;
   private String mMusic;
   private String mDrinks;
   private int mTotalCost;
+  private ArrayList<Integer> costs;
   //maybe make an array list to seperate the cost of all the items
   //maybe an array with all possible choices and have a validator method that quits if everything fails
 
-
+  public Event(){
+    Random rnd = new Random();
+    String [] partyOptions = new String[]{"Wedding","Birthday","Holiday"};
+    String [] mealOptions = new String[]{"Dinner","Horderves","Pizza"};
+    String [] musicOptions = new String[]{"Band","DJ","Personal Playlist"};
+    String [] drinkOptions = new String[]{"Open Bar","Cash Bar","Kegs"};
+    mPartyType = partyOptions [rnd.nextInt(3)];
+    mMeal = mealOptions [rnd.nextInt(3)];
+    mMusic = musicOptions [rnd.nextInt(3)];
+    mDrinks = drinkOptions [rnd.nextInt(3)];
+    mNumberOfAttendees = rnd.nextInt(200)+1;
+    costs = new ArrayList<Integer>();
+  }
   //create a seperate constructor to handle a randomization
   public Event(String partyType, int numberOfAttendees, String meal, String music, String drinks){
     mPartyType = partyType;
@@ -27,6 +38,7 @@ public class Event{
     mMusic = music;
     mDrinks = drinks;
     mTotalCost = 0;
+    costs = new ArrayList<Integer>();
   }
 
   //control for random input
@@ -48,6 +60,7 @@ public class Event{
         mTotalCost+= 10 * (mNumberOfAttendees-30);
       }
     }
+    costs.add(mTotalCost);
     //meal
     if(mMeal.equalsIgnoreCase("Dinner")){
       mTotalCost += 25 * mNumberOfAttendees;
@@ -56,33 +69,18 @@ public class Event{
     }else {
       mTotalCost +=5 * mNumberOfAttendees;
     }
+    costs.add(mTotalCost-costs.get(costs.size()-1));
 
-
-    switch(mMusic){
-      case "Band" :
-      case "band" :
-        mTotalCost += 500;
-        break;
-      case "DJ" :
-      case "dj" :
-        mTotalCost += 200;
-        break;
-      case "Personal Playlist" :
-      case "personal playlist" :
-        mTotalCost += 10;
-        break;
-      default : throw new IllegalArgumentException("Not a valid command");
+    if(mMusic.equalsIgnoreCase("Band")){
+      mTotalCost += 500;
+    }else if(mMusic.equalsIgnoreCase("DJ")){
+      mTotalCost += 200;
+    }else {
+      mTotalCost += 10;
     }
-    //music
-    // if(mMusic.equalsIgnoreCase("Band")){
-    //   mTotalCost += 500;
-    // }else if(mMusic.equalsIgnoreCase("DJ")){
-    //   mTotalCost += 200;
-    // }else{
-    //   mTotalCost += 10;
-    // }
+    costs.add(mTotalCost-(costs.get(costs.size()-1)+costs.get(costs.size()-2)));
     //drinks
-    if(mDrinks.equalsIgnoreCase("Open Bar")){
+    if(mDrinks.equalsIgnoreCase("Open Bar")||mDrinks.equalsIgnoreCase("Open")){
       mTotalCost += 20 * mNumberOfAttendees;
     }else if(mDrinks.equalsIgnoreCase("Keg") || mDrinks.equalsIgnoreCase("Kegs")){
       double roundUp = Math.ceil((double)mNumberOfAttendees/50);
@@ -98,13 +96,31 @@ public class Event{
     }else{
       mTotalCost += 100;
     }
-
+    costs.add(mTotalCost-(costs.get(costs.size()-1)+costs.get(costs.size()-2)+costs.get(costs.size()-3)));
   }
  // possibly change grammar for certain outcomes like 1 person and not for 1 people
  //rented speakers if type personal play list and i do the receipt
   public String displayRequest(){
-    String writtenRequest = String.format("You have requested a %s for %d people. You will be served %s, alongside an %s. Your musical entertainment will be provided by a %s",mPartyType,mNumberOfAttendees,mMeal,mDrinks,mMusic);
-    return writtenRequest;
+    if(mMusic.equalsIgnoreCase("Personal Playlist")){
+      mMusic = "Stereo Rental";
+    }
+    if(mMeal.equalsIgnoreCase("pizza")||mMeal.equalsIgnoreCase("dinner")){
+      mMeal +="\t";
+    }
+    if(mMusic.equalsIgnoreCase("DJ")|| mMusic.equalsIgnoreCase("band")){
+      mMusic +="\t";
+    }
+    if(mDrinks.equalsIgnoreCase("Keg")||mDrinks.equalsIgnoreCase("Kegs")){
+      mDrinks ="Keg(s)\t";
+    }
+
+    String receipt = String.format("\tAndrew's Event Planning\n%s \t $%d\nGuest Count \t %d \n%s \t $%d \n%s \t $%d \n%s \t $%d\nTotal Amount: \t $%d.",mPartyType,costs.get(0),mNumberOfAttendees,mMeal,costs.get(1),mMusic,costs.get(2),mDrinks,costs.get(3),mTotalCost);
+
+    return receipt;
+  }
+//get rid of this method
+  public boolean validate(){
+return false;
   }
 
   public String getPartyType(){

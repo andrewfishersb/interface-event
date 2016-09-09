@@ -11,8 +11,9 @@ public class EventTest{
 
   @Test
   public void displayRequest_WritesAStringOfAllYourRequestedInformation_String(){
-    Event eventCreated = new Event("Wedding",100,"Dinner","Band","Open Bar");
-    String expectedOutcome = "You have requested a Wedding for 100 people. You will be served Dinner, alongside an Open Bar. Your musical entertainment will be provided by a Band";
+    Event eventCreated = new Event("Birthday",10,"Horderves","DJ","Cash Bar");
+    eventCreated.calculateCost();
+    String expectedOutcome = "\tAndrew's Event Planning\nBirthday \t $100\nGuest Count \t 10 \nHorderves \t $50 \nDJ\t \t $200 \nCash Bar \t $100\nTotal Amount: \t $450.";
     assertEquals(expectedOutcome, eventCreated.displayRequest());
   }
 
