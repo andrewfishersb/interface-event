@@ -8,6 +8,25 @@ public class EventTest{
     Event eventCreated = new Event("Wedding",100,"Dinner","Band","Open Bar");
     assertEquals(true, eventCreated instanceof Event);
   }
+
+  @Test
+  public void displayRequest_WritesAStringOfAllYourRequestedInformation_String(){
+    Event eventCreated = new Event("Wedding",100,"Dinner","Band","Open Bar");
+    String expectedOutcome = "You have requested a Wedding for 100 people. You will be served Dinner, alongside an Open Bar. Your musical entertainment will be provided by a Band";
+    assertEquals(expectedOutcome, eventCreated.displayRequest());
+  }
+
+
+
+
+
+
+
+
+
+
+
+
   @Test
   public void getPartyType_TypeOfParty_Wedding(){
     Event eventCreated = new Event("Wedding",100,"Dinner","Band","Open Bar");
@@ -20,21 +39,21 @@ public class EventTest{
     int expectedOutcome = 100;
     assertEquals(expectedOutcome, eventCreated.getNumberOfAttendees());
   }
-//meal
+
   @Test
   public void getMeal_TypeOfMeal_Dinner(){
     Event eventCreated = new Event("Wedding",100,"Dinner","Band","Open Bar");
     String expectedOutcome = "Dinner";
     assertEquals(expectedOutcome, eventCreated.getMeal());
   }
-//msuic
+
   @Test
   public void getMusic_MusicProvidedPlatform_Band(){
     Event eventCreated = new Event("Wedding",100,"Dinner","Band","Open Bar");
     String expectedOutcome = "Band";
     assertEquals(expectedOutcome, eventCreated.getMusic());
   }
-//drinlks
+
   @Test
   public void getDrinks_DrinkService_OpenBar(){
     Event eventCreated = new Event("Wedding",100,"Dinner","Band","Open Bar");

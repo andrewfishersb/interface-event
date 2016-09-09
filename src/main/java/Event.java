@@ -15,11 +15,12 @@ public class Event{
     mTotalCost = 0;
   }
   public void calculateCost(){
-    
-  }
 
+  }
+ // possibly change grammar for certain outcomes like 1 person and not for 1 people
   public String displayRequest(){
-    return "";
+    String writtenRequest = String.format("You have requested a %s for %d people. You will be served %s, alongside an %s. Your musical entertainment will be provided by a %s",mPartyType,mNumberOfAttendees,mMeal,mDrinks,mMusic);
+    return writtenRequest;
   }
 
   public String getPartyType(){
