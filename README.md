@@ -46,7 +46,8 @@ _7. It can take the given input and calculate the cost of the party_
 
 ## Known Bugs
 
-_No Known Bugs_
+_Large numbers become negative_
+_Cannot handle huge numbers_
 
 ## Contact
 * _Andrewfishersb@gmail.com_

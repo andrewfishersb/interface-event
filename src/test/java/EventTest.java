@@ -1,5 +1,7 @@
 import org.junit.*;
 import static org.junit.Assert.*;
+import java.util.List;
+import java.util.ArrayList;
 
 public class EventTest{
 
@@ -8,6 +10,7 @@ public class EventTest{
     Event eventCreated = new Event("Wedding",100,"Dinner","Band","Open Bar");
     assertEquals(true, eventCreated instanceof Event);
   }
+
 
   @Test
   public void displayRequest_WritesAStringOfAllYourRequestedInformation_String(){
@@ -136,6 +139,7 @@ public class EventTest{
     assertEquals(expectedOutcome, eventCreated.getTotalCost());
   }
 
+
   @Test
   public void getPartyType_TypeOfParty_Wedding(){
     Event eventCreated = new Event("Wedding",100,"Dinner","Band","Open Bar");
@@ -163,7 +167,13 @@ public class EventTest{
     String expectedOutcome = "Band";
     assertEquals(expectedOutcome, eventCreated.getMusic());
   }
-
+  @Test
+    public void getMusic_ControlForBadInput_NoMusic(){
+      Event eventCreated = new Event("Birthday",10,"Horderves","Pop Star","Cash Bar");
+      eventCreated.calculateCost();
+      String expectedOutcome = "No Music";
+      assertEquals(expectedOutcome, eventCreated.getMusic());
+    }
   @Test
   public void getDrinks_DrinkService_OpenBar(){
     Event eventCreated = new Event("Wedding",100,"Dinner","Band","Open Bar");
@@ -177,5 +187,16 @@ public class EventTest{
     int expectedOutcome = 6000;
     eventCreated.calculateCost();
     assertEquals(expectedOutcome, eventCreated.getTotalCost());
+  }
+  @Test
+  public void getCostArrayList_CostArray_ArrayList(){
+    Event eventCreated = new Event("Wedding",100,"Dinner","Band","Open Bar");
+    eventCreated.calculateCost();
+    List<Integer> expectedOutcome = new ArrayList<Integer>();
+    expectedOutcome.add(1000);
+    expectedOutcome.add(2500);
+    expectedOutcome.add(500);
+    expectedOutcome.add(2000);
+    assertEquals(expectedOutcome, eventCreated.getCostArrayList());
   }
 }
