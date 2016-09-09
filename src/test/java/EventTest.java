@@ -15,11 +15,11 @@ public class EventTest{
     String expectedOutcome = "You have requested a Wedding for 100 people. You will be served Dinner, alongside an Open Bar. Your musical entertainment will be provided by a Band";
     assertEquals(expectedOutcome, eventCreated.displayRequest());
   }
-//wedding
+
   @Test
   public void calculateCost_Wedding100orUnder_1610(){
     Event eventCreated = new Event("Wedding",100,"Horderves","Personal Playlist","Cash Bar");
-    int expectedOutcome = 1810;
+    int expectedOutcome = 1610;
     eventCreated.calculateCost();
     assertEquals(expectedOutcome, eventCreated.getTotalCost());
   }
@@ -27,124 +27,121 @@ public class EventTest{
   @Test
   public void calculateCost_WeddingOver100_1630(){
     Event eventCreated = new Event("Wedding",101,"Horderves","Personal Playlist","Cash Bar");
-    int expectedOutcome = 1830;
+    int expectedOutcome = 1630;
     eventCreated.calculateCost();
     assertEquals(expectedOutcome, eventCreated.getTotalCost());
   }
-//Holiday
+
   @Test
-  public void calculateCost_Holiday50orUnder_500(){
+  public void calculateCost_Holiday50orUnder_660(){
     Event eventCreated = new Event("Holiday",50,"Horderves","Personal Playlist","Cash Bar");
-    int expectedOutcome = 500;
+    int expectedOutcome = 660;
     eventCreated.calculateCost();
     assertEquals(expectedOutcome, eventCreated.getTotalCost());
   }
 
   @Test
-  public void calculateCost_HolidayOver50_1790(){
+  public void calculateCost_HolidayOver50_680(){
     Event eventCreated = new Event("Holiday",51,"Horderves","Personal Playlist","Cash Bar");
-    int expectedOutcome = 515;
-    eventCreated.calculateCost();
-    assertEquals(expectedOutcome, eventCreated.getTotalCost());
-  }
-  //birthday
-  @Test
-  public void calculateCost_Birthday30orUnder_325(){
-    Event eventCreated = new Event("Birthday",30,"Horderves","Personal Playlist","Cash Bar");
-    int expectedOutcome = 325;
+    int expectedOutcome = 680;
     eventCreated.calculateCost();
     assertEquals(expectedOutcome, eventCreated.getTotalCost());
   }
 
   @Test
-  public void calculateCost_BirthdayOver30_365(){
+  public void calculateCost_Birthday30orUnder_360(){
+    Event eventCreated = new Event("Birthday",30,"Horderves","Personal Playlist","Cash Bar");
+    int expectedOutcome = 360;
+    eventCreated.calculateCost();
+    assertEquals(expectedOutcome, eventCreated.getTotalCost());
+  }
+
+  @Test
+  public void calculateCost_BirthdayOver30_375(){
     Event eventCreated = new Event("Birthday",31,"Horderves","Personal Playlist","Cash Bar");
-    int expectedOutcome = 365;
+    int expectedOutcome = 375;
     eventCreated.calculateCost();
     assertEquals(expectedOutcome, eventCreated.getTotalCost());
   }
-  //MEALS TESTING
-  //Dinner
+
   @Test
-  public void calculateCost_DinnerAdded_825(){
+  public void calculateCost_DinnerAdded_460(){
     Event eventCreated = new Event("Birthday",10,"Dinner","Personal Playlist","Cash Bar");
-    int expectedOutcome = 825;
+    int expectedOutcome = 460;
     eventCreated.calculateCost();
     assertEquals(expectedOutcome, eventCreated.getTotalCost());
   }
-  //horderves
+
   @Test
-  public void calculateCost_HordervesAdded_325(){
-    Event eventCreated = new Event("Birthday",10,"Horderves","Personal Playlist","Cash Bar");
-    int expectedOutcome = 325;
+  public void calculateCost_HordervesAdded_1160(){
+    Event eventCreated = new Event("Wedding",10,"Horderves","Personal Playlist","Cash Bar");
+    int expectedOutcome = 1160;
     eventCreated.calculateCost();
     assertEquals(expectedOutcome, eventCreated.getTotalCost());
   }
-  //pizza 6 people for a large pizza $17
+
   @Test
-  public void calculateCost_PizzaAdded_455(){
-    Event eventCreated = new Event("Birthday",10,"Pizza","Personal Playlist","Cash Bar");
-    int expectedOutcome = 455;
+  public void calculateCost_PizzaAdded_278(){
+    Event eventCreated = new Event("Birthday",20,"Pizza","Personal Playlist","Cash Bar");
+    int expectedOutcome = 278;
     eventCreated.calculateCost();
     assertEquals(expectedOutcome, eventCreated.getTotalCost());
   }
-//TESTING MUSIC
-//Band
+
   @Test
-  public void calculateCost_BandAdded_455(){
+  public void calculateCost_BandAdded_750(){
     Event eventCreated = new Event("Birthday",10,"Horderves","Band","Cash Bar");
-    int expectedOutcome = 455;
+    int expectedOutcome = 750;
     eventCreated.calculateCost();
     assertEquals(expectedOutcome, eventCreated.getTotalCost());
   }
-  //DJ
+
   @Test
-  public void calculateCost_DJAdded_455(){
+  public void calculateCost_DJAdded_450(){
     Event eventCreated = new Event("Birthday",10,"Horderves","DJ","Cash Bar");
-    int expectedOutcome = 455;
+    int expectedOutcome = 450;
     eventCreated.calculateCost();
     assertEquals(expectedOutcome, eventCreated.getTotalCost());
   }
-  //Playlist
   @Test
-  public void calculateCost_PlaylistAdded_455(){
-    Event eventCreated = new Event("Birthday",10,"Horderves","Personal Playlist","Cash Bar");
-    int expectedOutcome = 455;
+  public void calculateCost_PlaylistAdded_460(){
+    Event eventCreated = new Event("Holiday",10,"Horderves","Personal Playlist","Cash Bar");
+    int expectedOutcome = 460;
     eventCreated.calculateCost();
     assertEquals(expectedOutcome, eventCreated.getTotalCost());
   }
-//TESTING Drink provider
-//Open Bar
+
   @Test
-  public void calculateCost_OpenBarAdded_455(){
+  public void calculateCost_OpenBarAdded_360(){
     Event eventCreated = new Event("Birthday",10,"Horderves","Personal Playlist","Open Bar");
-    int expectedOutcome = 455;
+    int expectedOutcome = 360;
     eventCreated.calculateCost();
     assertEquals(expectedOutcome, eventCreated.getTotalCost());
   }
-  //Keg - may depend on amount of people
+
   @Test
-  public void calculateCost_KegsAdded_455(){
-    Event eventCreated = new Event("Birthday",10,"Horderves","Personal Playlist","Kegs");
-    int expectedOutcome = 455;
+  public void calculateCost_KegsAdded_2510(){
+    Event eventCreated = new Event("Birthday",150,"Horderves","Personal Playlist","Kegs");
+    int expectedOutcome = 2510;
     eventCreated.calculateCost();
     assertEquals(expectedOutcome, eventCreated.getTotalCost());
   }
-  //Cash Bar
+
   @Test
-  public void calculateCost_CashBarAdded_455(){
+  public void calculateCost_CashBarAdded_260(){
     Event eventCreated = new Event("Birthday",10,"Horderves","Personal Playlist","Cash Bar");
-    int expectedOutcome = 455;
+    int expectedOutcome = 260;
     eventCreated.calculateCost();
     assertEquals(expectedOutcome, eventCreated.getTotalCost());
   }
-//Getters
+
   @Test
   public void getPartyType_TypeOfParty_Wedding(){
     Event eventCreated = new Event("Wedding",100,"Dinner","Band","Open Bar");
     String expectedOutcome = "Wedding";
     assertEquals(expectedOutcome, eventCreated.getPartyType());
   }
+
   @Test
   public void getNumberOfAttendees_NumberOfAttendees_100(){
     Event eventCreated = new Event("Wedding",100,"Dinner","Band","Open Bar");
@@ -174,10 +171,10 @@ public class EventTest{
   }
 
   @Test
-  public void getTotalCost_Cost_10000(){
+  public void getTotalCost_Cost_6000(){
     Event eventCreated = new Event("Wedding",100,"Dinner","Band","Open Bar");
-    int expectedOutcome = 10000;
+    int expectedOutcome = 6000;
+    eventCreated.calculateCost();
     assertEquals(expectedOutcome, eventCreated.getTotalCost());
   }
-
 }

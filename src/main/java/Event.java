@@ -1,5 +1,7 @@
 import java.util.List;
 import java.util.ArrayList;
+import java.lang.Throwable;
+import java.lang.Exception;
 
 
 public class Event{
@@ -27,7 +29,6 @@ public class Event{
     mTotalCost = 0;
   }
 
-  // ave wedding cost in portland 6,000
   //control for random input
   public void calculateCost(){
     //party
@@ -37,12 +38,12 @@ public class Event{
         mTotalCost += 15 * (mNumberOfAttendees-100);
       }
     }else if(mPartyType.equalsIgnoreCase("Holiday")){
-        mTotalCost+=500;
+        mTotalCost+=300;
       if(mNumberOfAttendees > 50){
           mTotalCost+= 15 * (mNumberOfAttendees-50);
       }
     }else{
-      mTotalCost +=200;
+      mTotalCost +=100;
       if(mNumberOfAttendees>30){
         mTotalCost+= 10 * (mNumberOfAttendees-30);
       }
@@ -55,25 +56,44 @@ public class Event{
     }else {
       mTotalCost +=5 * mNumberOfAttendees;
     }
-    //music
-    if(mMusic.equalsIgnoreCase("Band")){
-      mTotalCost += 500;
-    }else if(mMusic.equalsIgnoreCase("DJ")){
-      mTotalCost += 200;
-    }else{
-      mTotalCost += 10;
+
+
+    switch(mMusic){
+      case "Band" :
+      case "band" :
+        mTotalCost += 500;
+        break;
+      case "DJ" :
+      case "dj" :
+        mTotalCost += 200;
+        break;
+      case "Personal Playlist" :
+      case "personal playlist" :
+        mTotalCost += 10;
+        break;
+      default : throw new IllegalArgumentException("Not a valid command");
     }
+    //music
+    // if(mMusic.equalsIgnoreCase("Band")){
+    //   mTotalCost += 500;
+    // }else if(mMusic.equalsIgnoreCase("DJ")){
+    //   mTotalCost += 200;
+    // }else{
+    //   mTotalCost += 10;
+    // }
     //drinks
     if(mDrinks.equalsIgnoreCase("Open Bar")){
       mTotalCost += 20 * mNumberOfAttendees;
-    }else if(mDrinks.equalsIgnoreCase("Keg")){
+    }else if(mDrinks.equalsIgnoreCase("Keg") || mDrinks.equalsIgnoreCase("Kegs")){
+      double roundUp = Math.ceil((double)mNumberOfAttendees/50);
+
       // if(mNumberOfAttendees < 15){
       //   mTotalCost +=60;
       // }
       // else if(mNumberOfAttendees< 30){
       //   mTotalCost += 80;
       // }else{
-        mTotalCost += ((mNumberOfAttendees/50)+1) * 150;
+        mTotalCost +=  roundUp * 150;//(mNumberOfAttendees/50)
       // }
     }else{
       mTotalCost += 100;
