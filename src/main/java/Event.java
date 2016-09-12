@@ -112,7 +112,7 @@ public class Event{
       mDrinks ="Keg(s)\t";
     }
 
-    String receipt = String.format("\tAndrew's Event Planning\n%s \t $%d\nGuest Count \t %d \n%s \t $%d \n%s \t $%d \n%s \t $%d\nTotal Amount: \t $%d.",mPartyType,mCosts.get(0),mNumberOfAttendees,mMeal,mCosts.get(1),mMusic,mCosts.get(2),mDrinks,mCosts.get(3),mTotalCost);
+    String receipt = String.format("\tAndrew's Event Planning\n%s \t $%d\nGuest Count \t %d \n%s \t $%d \n%s \t $%d \n%s \t $%d\nTotal Amount: \t $%d",mPartyType,mCosts.get(0),mNumberOfAttendees,mMeal,mCosts.get(1),mMusic,mCosts.get(2),mDrinks,mCosts.get(3),mTotalCost);
 
     return receipt;
   }
