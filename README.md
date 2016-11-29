@@ -1,3 +1,5 @@
+# _FIX SET UP SECTION_ 
+
 # _Event Planner_
 
 #### _Event Planning Behavior Driven Development project, September 9th, 2016_
